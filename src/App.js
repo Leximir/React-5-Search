@@ -1,32 +1,20 @@
-const VIDEOS = [
-    {
-        id: 1,
-        title: "How to learn React",
-        url: "https://www.youtube.com/watch?v=SqcY0GlETPk&t=163s&pp=ygUSaG93IHRvIGxlYXJuIHJlYWN0",
-        cover: "https://i.ytimg.com/vi/SqcY0GlETPk/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&amp;rs=AOn4CLBvF7R7tYEZqgAYn6fM5A_QgI1e-A"
-    },
-    {
-        id: 2,
-        title: "How to learn Java",
-        url: "https://www.youtube.com/watch?v=eIrMbAQSU34&t=106s&pp=ygURaG93IHRvIGxlYXJuIGphdmE%3D",
-        cover: "https://i.ytimg.com/vi/eIrMbAQSU34/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLC3bM8lm8NAZf6SKcaS2MAv4IjZZg"
-    },
-];
+import AllVideos from "./Components/AllVideos";
+import Video from "./Components/Video"
+import {BrowserRouter, Route, Routes} from "react-router-dom";
+
 const App = () => {
 
-  return (
-      <>
-
-          {VIDEOS.map((videoObject, index) => (
-              <a key={index} href={videoObject.url} target="_blank">
-                  <img src={videoObject.cover} alt="" width="300px"/>
-                  <p>{videoObject.title}</p>
-              </a>
-          ))}
-
-      </>
-  );
-
+    return (
+        <>
+            <BrowserRouter>
+                <Routes>
+                    <Route path="/" element={<AllVideos/>}/>
+                    <Route path="/video/:id" element={<Video />}/>
+                </Routes>
+            </BrowserRouter>
+            {/*<AllVideos />*/}
+        </>
+    );
 }
 
 export default App;
